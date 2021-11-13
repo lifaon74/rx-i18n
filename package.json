@@ -1,0 +1,16 @@
+{
+  "name": "@lifaon/rx-i18n",
+  "version": "1.0.0",
+  "description": "Description",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/lifaon74/rx-i18n"
+  },
+  "keywords": [],
+  "author": "Valentin Richard",
+  "license": "MIT",
+  "access": "public",
+  "dependencies": {
+    "@lifaon/rx-js-light": "^2.0.0"
+  }
+}
