@@ -44,7 +44,7 @@ export type IDateTimeFormatFractionalSecondDigits = 0 | 1 | 2 | 3;
 
 export type IDateTimeFormatTimeZoneName = 'long' | 'short';
 
-export interface IDateTimeFormatOptions extends Omit<DateTimeFormatOptions, 'calendar'> {
+export interface IDateTimeFormatOptions extends DateTimeFormatOptions {
   dateStyle?: IDateTimeFormatDateStyle;
   timeStyle?: IDateTimeFormatTimeStyle;
   calendar?: IDateTimeFormatCalendar;

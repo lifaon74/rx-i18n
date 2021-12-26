@@ -13,11 +13,6 @@ export interface IRelativeTimeFormatOptions extends RelativeTimeFormatOptions {
   style?: IRelativeTimeFormatStyle;
 }
 
-export interface IRelativeTimeFormatValueAndUnit {
-  value: IRelativeTimeFormatValue;
-  unit: IRelativeTimeFormatUnit;
-}
-
 export type IRelativeTimeFormatValue = number;
 
 export type IRelativeTimeFormatUnit =

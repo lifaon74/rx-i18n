@@ -1,8 +1,5 @@
-export type ITranslations = Map<string, string>;
+export type ITranslations = ReadonlyMap<string, string>;
+export type IMutableTranslations = Map<string, string>;
 
-export type ITranslationKey = string;
-export type ITranslationValue = string;
-
-export type ITranslationKeyToTranslationValueMap = Map<ITranslationKey, ITranslationValue>;
-export type ILocaleToTranslationKeyToTranslationValueMap = Map<string, ITranslationKeyToTranslationValueMap>;
+export type ILocaleToTranslations = ReadonlyMap<string, ITranslations>;
 

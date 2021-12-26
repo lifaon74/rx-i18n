@@ -25,7 +25,7 @@ export type INumberFormatUnit = string;
 
 export type INumberFormatUnitDisplay = 'long' | 'short' | 'narrow';
 
-export interface INumberFormatOptions extends NumberFormatOptions {
+export interface INumberFormatOptions extends Omit<NumberFormatOptions, 'signDisplay'> {
   compactDisplay?: INumberFormatCompactDisplay;
 
   currency?: INumberFormatCurrency;

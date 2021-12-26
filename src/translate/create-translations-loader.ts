@@ -1,6 +1,6 @@
-import { IObservable, mergeMapObservablePipe, pipeObservable } from '@lifaon/rx-js-light';
-import { ITranslations } from './translations.type';
+import { IObservable, mergeMapObservable } from '@lifaon/rx-js-light';
 import { ILocales } from '../locales/locales.type';
+import { ITranslations } from './translations.type';
 
 export interface ITranslationLoader {
   (locales: ILocales): IObservable<ITranslations>;
@@ -10,7 +10,5 @@ export function createTranslationsLoader(
   locales: IObservable<ILocales>,
   load: ITranslationLoader,
 ): IObservable<ITranslations> {
-  return pipeObservable(locales, [
-    mergeMapObservablePipe<ILocales, ITranslations>(load),
-  ]);
+  return mergeMapObservable(locales, load);
 }

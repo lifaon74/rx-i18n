@@ -1,27 +1,19 @@
-import { IObservable, IObservablePipe, reactiveFunction, single } from '@lifaon/rx-js-light';
+import { IObservable, IObservablePipe, single } from '@lifaon/rx-js-light';
 import { ILocales } from '../locales/locales.type';
-import { IRelativeTimeFormatOptions, IRelativeTimeFormatValueAndUnit } from './relative-time-format.type';
-import RelativeTimeFormat = Intl.RelativeTimeFormat;
+import { relativeTimeFormatObservable } from './relative-time-format-observable';
+import { IRelativeTimeFormatOptions, IRelativeTimeFormatUnit, IRelativeTimeFormatValue } from './relative-time-format.type';
 
-export function relativeTimeFormatObservablePipe(
+export function relativeTimeFormaObservablePipe(
+  unit: IObservable<IRelativeTimeFormatUnit>,
   locales: IObservable<ILocales>,
   options: IObservable<IRelativeTimeFormatOptions> = single({}),
-): IObservablePipe<IRelativeTimeFormatValueAndUnit, string> {
-  const format: IObservable<RelativeTimeFormat> = reactiveFunction(
-    [locales, options],
-    (locales: ILocales, options: IRelativeTimeFormatOptions): RelativeTimeFormat => {
-      return new Intl.RelativeTimeFormat(locales as string[], options);
-    },
-  );
-  return (subscribe: IObservable<IRelativeTimeFormatValueAndUnit>): IObservable<string> => {
-    return reactiveFunction(
-      [subscribe, format],
-      ({ value, unit }: IRelativeTimeFormatValueAndUnit, format: RelativeTimeFormat): string => {
-        return format.format(value, unit);
-      },
+): IObservablePipe<IRelativeTimeFormatValue, string> {
+  return (subscribe: IObservable<IRelativeTimeFormatValue>): IObservable<string> => {
+    return relativeTimeFormatObservable(
+      subscribe,
+      unit,
+      locales,
+      options,
     );
   };
 }
-
-
-
